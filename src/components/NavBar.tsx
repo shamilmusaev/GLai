@@ -27,7 +27,9 @@ export default function NavBar({ settings }: NavBarProps) {
                     <li key={item.label}>
                     <ButtonLink key={item.label} field={item.link}> 
                         {item.label}
+                        
                     </ButtonLink>
+                    
                     </li>
                 )
             }
