@@ -73,20 +73,20 @@ export default function AnimatedContent({
       <StarGrid />
       {isFilled.richText(slice.primary.heading) && (
         <PrismicRichText
-        field={slice.primary.heading}
-        components={{
-          heading1: ({ children }) => (
-            <h1 className="hero__heading text-balance text-center text-5xl font-medium md:text-7xl">
-              {children}
-            </h1>
-          ),
-          em: ({ children }) => (
-            <em className="hero__heading bg-gradient-to-b from-yellow-100 to-yellow-500 bg-clip-text not-italic text-transparent">
-              {children}
-            </em>
-          ),
-        }}
-      />
+          field={slice.primary.heading}
+          components={{
+            heading1: ({ children }) => (
+              <h1 className="hero__heading text-balance text-center text-5xl font-medium md:text-7xl">
+                {children}
+              </h1>
+            ),
+            em: ({ children }) => (
+              <em className="hero__heading bg-gradient-to-b from-yellow-100 to-yellow-500 bg-clip-text not-italic text-transparent">
+                {children}
+              </em>
+            ),
+          }}
+        />
       )}
 
       {isFilled.richText(slice.primary.body) && (
@@ -95,7 +95,7 @@ export default function AnimatedContent({
         </div>
       )}
 
-      <div className="flex justify-center gap-5">
+      <div className="flex flex-col justify-center gap-5 md:flex-row items-center">
         {isFilled.link(slice.primary.button_link) && (
           <ButtonLink
             className="hero__button mt-8 opacity-0"
@@ -106,7 +106,7 @@ export default function AnimatedContent({
         )}
         {isFilled.link(slice.primary.button_link2) && (
           <ButtonLink
-            className="hero__button mt-8 opacity-0"
+            className="hero__button mt-0 md:mt-8 opacity-0" 
             field={slice.primary.button_link2}
           >
             {slice.primary.button_label2}
@@ -123,7 +123,6 @@ export default function AnimatedContent({
             className="rounded-lg"
             field={slice.primary.image}
             quality={200}
-            
           />
         </div>
       )}
