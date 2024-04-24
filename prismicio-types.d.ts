@@ -103,6 +103,7 @@ export type CaseStudyDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | AboutSlice
   | CallToActionSlice
   | IntegrationsSlice
   | CaseStudiesSlice
@@ -286,6 +287,88 @@ export type AllDocumentTypes =
   | CaseStudyDocument
   | PageDocument
   | SettingsDocument;
+
+/**
+ * Primary content in *About → Primary*
+ */
+export interface AboutSliceDefaultPrimary {
+  /**
+   * Heading field in *About → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Paragraph1 field in *About → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.primary.paragraph1
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  paragraph1: prismic.RichTextField;
+
+  /**
+   * Paragraph2 field in *About → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.primary.paragraph2
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  paragraph2: prismic.RichTextField;
+
+  /**
+   * Paragraph3 field in *About → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.primary.paragraph3
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  paragraph3: prismic.RichTextField;
+
+  /**
+   * Paragraph4 field in *About → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.primary.paragraph4
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  paragraph4: prismic.RichTextField;
+}
+
+/**
+ * Default variation for About Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<AboutSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *About*
+ */
+type AboutSliceVariation = AboutSliceDefault;
+
+/**
+ * About Shared Slice
+ *
+ * - **API ID**: `about`
+ * - **Description**: About
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutSlice = prismic.SharedSlice<"about", AboutSliceVariation>;
 
 /**
  * Primary content in *Bento → Primary*
@@ -527,12 +610,12 @@ export interface HeroSliceDefaultPrimary {
   /**
    * Heading field in *Hero → Primary*
    *
-   * - **Field Type**: Title
+   * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
    * - **API ID Path**: hero.primary.heading
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  heading: prismic.TitleField;
+  heading: prismic.RichTextField;
 
   /**
    * Body field in *Hero → Primary*
@@ -563,6 +646,26 @@ export interface HeroSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   button_label: prismic.KeyTextField;
+
+  /**
+   * Button Link2 field in *Hero → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.primary.button_link2
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_link2: prismic.LinkField;
+
+  /**
+   * Button Label2 field in *Hero → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.primary.button_label2
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_label2: prismic.KeyTextField;
 
   /**
    * Image field in *Hero → Primary*
@@ -932,6 +1035,10 @@ declare module "@prismicio/client" {
       SettingsDocumentData,
       SettingsDocumentDataNavigationItem,
       AllDocumentTypes,
+      AboutSlice,
+      AboutSliceDefaultPrimary,
+      AboutSliceVariation,
+      AboutSliceDefault,
       BentoSlice,
       BentoSliceDefaultPrimary,
       BentoSliceDefaultItem,

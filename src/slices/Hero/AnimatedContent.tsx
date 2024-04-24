@@ -30,7 +30,7 @@ export default function AnimatedContent({
           ".hero__heading, .hero__body, .hero__button, .hero__image, .hero__glow",
           { opacity: 1 },
         );
-        return
+        return;
       }
       const tl = gsap.timeline({ defaults: { ease: "power2.inOut" } });
 
@@ -72,9 +72,21 @@ export default function AnimatedContent({
     <div className="relative" ref={container}>
       <StarGrid />
       {isFilled.richText(slice.primary.heading) && (
-        <h1 className="hero__heading text-balance text-5xl font-medium opacity-0 md:text-7xl">
-          <PrismicText field={slice.primary.heading} />
-        </h1>
+        <PrismicRichText
+        field={slice.primary.heading}
+        components={{
+          heading1: ({ children }) => (
+            <h1 className="hero__heading text-balance text-center text-5xl font-medium md:text-7xl">
+              {children}
+            </h1>
+          ),
+          em: ({ children }) => (
+            <em className="hero__heading bg-gradient-to-b from-yellow-100 to-yellow-500 bg-clip-text not-italic text-transparent">
+              {children}
+            </em>
+          ),
+        }}
+      />
       )}
 
       {isFilled.richText(slice.primary.body) && (
@@ -83,14 +95,24 @@ export default function AnimatedContent({
         </div>
       )}
 
-      {isFilled.link(slice.primary.button_link) && (
-        <ButtonLink
-          className="hero__button mt-8 opacity-0"
-          field={slice.primary.button_link}
-        >
-          {slice.primary.button_label}
-        </ButtonLink>
-      )}
+      <div className="flex justify-center gap-5">
+        {isFilled.link(slice.primary.button_link) && (
+          <ButtonLink
+            className="hero__button mt-8 opacity-0"
+            field={slice.primary.button_link}
+          >
+            {slice.primary.button_label}
+          </ButtonLink>
+        )}
+        {isFilled.link(slice.primary.button_link2) && (
+          <ButtonLink
+            className="hero__button mt-8 opacity-0"
+            field={slice.primary.button_link2}
+          >
+            {slice.primary.button_label2}
+          </ButtonLink>
+        )}
+      </div>
 
       {isFilled.image(slice.primary.image) && (
         // стеклянный контейнер
@@ -101,6 +123,7 @@ export default function AnimatedContent({
             className="rounded-lg"
             field={slice.primary.image}
             quality={200}
+            
           />
         </div>
       )}

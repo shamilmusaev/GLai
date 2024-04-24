@@ -9,7 +9,7 @@
 					{
 						"type": "heading1",
 						"content": {
-							"text": "Buried"
+							"text": "Experiment"
 						}
 					}
 				]
@@ -59,6 +59,18 @@
 				"alt": null,
 				"__TYPE__": "ImageContent",
 				"thumbnails": {}
+			},
+			"button_link2": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://slicemachine.dev"
+				}
+			},
+			"button_label2": {
+				"__TYPE__": "FieldContent",
+				"value": "influence",
+				"type": "Text"
 			}
 		},
 		"items": []
